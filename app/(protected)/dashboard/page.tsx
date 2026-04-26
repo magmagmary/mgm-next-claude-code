@@ -1,10 +1,11 @@
-import { getAuth } from "@/lib/auth";
-import { headers } from "next/headers";
 import Link from "next/link";
+import { getSession } from "@/lib/session";
+import { getNotesByUser } from "@/lib/notes";
 import { logoutAction } from "./actions";
 
 export default async function DashboardPage() {
-  const session = await getAuth().api.getSession({ headers: await headers() });
+  const session = await getSession();
+  const notes = getNotesByUser(session!.user.id);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -39,16 +40,35 @@ export default async function DashboardPage() {
           </Link>
         </div>
 
-        {/* Empty state */}
-        <div className="flex flex-col items-center justify-center py-24 text-center">
-          <p className="text-gray-400 text-sm">No notes yet.</p>
-          <Link
-            href="/notes/new"
-            className="mt-3 text-sm text-gray-900 font-medium hover:underline"
-          >
-            Create your first note
-          </Link>
-        </div>
+        {notes.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <p className="text-gray-400 text-sm">No notes yet.</p>
+            <Link
+              href="/notes/new"
+              className="mt-3 text-sm text-gray-900 font-medium hover:underline"
+            >
+              Create your first note
+            </Link>
+          </div>
+        ) : (
+          <ul className="grid gap-3">
+            {notes.map((note) => (
+              <li key={note.id}>
+                <Link
+                  href={`/notes/${note.id}`}
+                  className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-400 transition-colors group"
+                >
+                  <span className="font-medium text-gray-900 group-hover:text-black truncate">
+                    {note.title}
+                  </span>
+                  <span className="text-xs text-gray-400 ml-4 shrink-0">
+                    {new Date(note.updatedAt).toLocaleDateString()}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </main>
     </div>
   );
