@@ -28,3 +28,6 @@
 
 10: Start session with plan mode:
 `claude --permission-mode plan`
+
+11: Check auto memory
+ `claude >> /memory`
