@@ -25,3 +25,6 @@
 9. Undo the applied change:
 `claude >> esc + esc`
  `claude >> /rewind`
+
+10: Start session with plan mode:
+`claude --permission-mode plan`
