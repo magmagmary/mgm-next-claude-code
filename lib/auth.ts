@@ -17,7 +17,7 @@ export function getAuth(): ReturnType<typeof betterAuth> {
     };
     _auth = betterAuth({
       database: new Database(DB_PATH, { create: true }),
-      emailAndPassword: { enabled: true },
+      emailAndPassword: { enabled: true, minPasswordLength: 1 },
       plugins: [nextCookies()],
     });
   }
