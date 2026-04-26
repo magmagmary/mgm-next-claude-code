@@ -5,6 +5,14 @@ export default function Home() {
         <h1 className="text-3xl font-semibold tracking-tight text-black dark:text-zinc-50">
           magmag
         </h1>
+        <ul className="mt-8 space-y-3 text-zinc-700 dark:text-zinc-300 list-disc list-inside text-lg">
+          <li>Improves flexibility and range of motion</li>
+          <li>Builds strength and muscle tone</li>
+          <li>Reduces stress and promotes relaxation</li>
+          <li>Enhances mental clarity and focus</li>
+          <li>Supports better posture and balance</li>
+          <li>Boosts energy levels and overall well-being</li>
+        </ul>
       </main>
     </div>
   );
