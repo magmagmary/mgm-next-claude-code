@@ -13,5 +13,15 @@
 5. Shift to accept edit mode:
 `shift + tab`
 
-6. Skip all the permissions
+6. Skip all the permissions 💣
 `claude --dangerously-skip-permissions`
+
+7. Running the claude code in the docker sandbox
+`docker sandbox run claude`
+
+8. Running the claude code in the sandbox mode
+`claude >> /sandbox`
+
+9. Undo the applied change:
+`claude >> esc + esc`
+ `claude >> /rewind`
