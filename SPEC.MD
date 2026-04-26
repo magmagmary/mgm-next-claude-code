@@ -22,6 +22,7 @@ A web application where authenticated users can create, view, edit, delete, and 
 - TypeScript
 - TailwindCSS
 - SQLite via Bun's SQLite client with raw SQL
+- pnpm (package manager)
 
 ---
 
@@ -34,6 +35,7 @@ A web application where authenticated users can create, view, edit, delete, and 
   - Client components for TipTap editor and interactive UI
   - Route Handlers (`app/api/.../route.ts`) for JSON APIs
 - **Runtime:** Bun (for dev & production)
+- **Package manager:** pnpm
 - **Database:** Single SQLite file (`data/app.db`) accessed via Bun's SQLite client
 - **Auth:** better-auth integrated into Next.js (middleware + server helpers)
 
@@ -544,7 +546,7 @@ Content is stored as `JSON.stringify(json)` and loaded via `JSON.parse`.
 
 ## 12. Development Workflow
 
-1. Initialize Next.js app with Bun & TypeScript
+1. Initialize Next.js app with pnpm & TypeScript (Bun as runtime)
 2. Set up TailwindCSS
 3. Integrate better-auth and session handling
 4. Implement SQLite DB initialization (`scripts/init-db.ts` or manual `.sql`)
