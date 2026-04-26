@@ -4,10 +4,14 @@
 2. Aska question right away without being on the cli:
 `claude -p "the question"`
 
-3. to continue the existing session:
+3. To continue the existing session:
 `claude >> /resume`
 
-4.  to continue the latest session:
+4. To continue the latest session:
 `claude -c`
 
-5. 
+5. Shift to accept edit mode:
+`shift + tab`
+
+6. Skip all the permissions
+`claude --dangerously-skip-permissions`
