@@ -7,6 +7,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 keep your response extremely concise and focus on conveying the key information. No unnecessary fluff, no long code snippets.
 
 
+whenever working with any third-party library or something similar, you MUST look up the official documentation to ensure theat we're working with up-to-date information.
+use the DocsExplorer subagnet for efficient documentation lookup.
+
 @AGENTS.md
 
 ## Commands
