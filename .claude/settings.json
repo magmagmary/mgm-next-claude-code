@@ -1,0 +1,15 @@
+{
+    "hooks": {
+        "PostToolUse": [
+            {
+                "mather":"Edit|Write",
+                "hooks": [
+                    {
+                        "type":"command",
+                        "command":"pnpm fmt 2> /dev/null || true"
+                    }
+                ]
+            }
+        ]
+    }
+}
