@@ -6,7 +6,9 @@
     "dev": "bunx --bun next dev",
     "build": "bunx --bun next build",
     "start": "bunx --bun next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
   },
   "dependencies": {
     "@tiptap/pm": "^3.22.4",
@@ -20,6 +22,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@oxfmt/binding-darwin-arm64": "^0.47.0",
     "@tailwindcss/postcss": "^4",
     "@types/bun": "^1.3.13",
     "@types/node": "^20",
@@ -27,6 +30,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "oxfmt": "^0.47.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

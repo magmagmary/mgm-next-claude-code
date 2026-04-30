@@ -9,7 +9,7 @@ export async function createNoteAction(formData: FormData) {
   const title = (formData.get("title") as string).trim() || "Untitled note";
   const contentJson = formData.get("content_json") as string;
 
-  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Create note action" , title);
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Create note action", title);
   createNote(session.user.id, { title, contentJson });
   redirect("/dashboard");
 }

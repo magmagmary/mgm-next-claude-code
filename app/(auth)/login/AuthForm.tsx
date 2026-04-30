@@ -20,9 +20,7 @@ export default function AuthForm({ mode, action }: Props) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="w-full max-w-sm">
-        <h1 className="text-3xl font-bold text-center mb-8 tracking-tight">
-          magmag
-        </h1>
+        <h1 className="text-3xl font-bold text-center mb-8 tracking-tight">magmag</h1>
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-8">
           {/* Tabs */}
           <div className="flex mb-6 border-b border-gray-200">
@@ -53,10 +51,7 @@ export default function AuthForm({ mode, action }: Props) {
           {/* Form */}
           <form action={formAction} className="space-y-4">
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                 Email
               </label>
               <input
@@ -70,10 +65,7 @@ export default function AuthForm({ mode, action }: Props) {
               />
             </div>
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                 Password
               </label>
               <input
@@ -87,9 +79,7 @@ export default function AuthForm({ mode, action }: Props) {
               />
             </div>
 
-            {state?.error && (
-              <p className="text-sm text-red-600">{state.error}</p>
-            )}
+            {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
 
             <button
               type="submit"

@@ -6,7 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 keep your response extremely concise and focus on conveying the key information. No unnecessary fluff, no long code snippets.
 
-
 whenever working with any third-party library or something similar, you MUST look up the official documentation to ensure theat we're working with up-to-date information.
 use the DocsExplorer subagnet for efficient documentation lookup.
 
@@ -44,14 +43,14 @@ This is a note-taking web app — **magmag** — built with Next.js 16 App Route
 
 ### Key dependencies
 
-| Package | Purpose |
-|---------|---------|
-| `next@16.2.4` | Framework (breaking changes vs older versions — see AGENTS.md) |
-| `better-auth` | Authentication (session management, email+password) |
-| `@tiptap/starter-kit` | Rich text editor |
-| `zod@^4` | Schema validation |
-| TailwindCSS 4 | Styling (configured via PostCSS, no `tailwind.config.ts` needed) |
-| Bun SQLite | Database — accessed via `Bun.Database`, NOT a Node.js driver |
+| Package               | Purpose                                                          |
+| --------------------- | ---------------------------------------------------------------- |
+| `next@16.2.4`         | Framework (breaking changes vs older versions — see AGENTS.md)   |
+| `better-auth`         | Authentication (session management, email+password)              |
+| `@tiptap/starter-kit` | Rich text editor                                                 |
+| `zod@^4`              | Schema validation                                                |
+| TailwindCSS 4         | Styling (configured via PostCSS, no `tailwind.config.ts` needed) |
+| Bun SQLite            | Database — accessed via `Bun.Database`, NOT a Node.js driver     |
 
 ### Database
 

@@ -3,10 +3,7 @@
 import { getAuth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
-export async function loginAction(
-  _prevState: { error: string } | null,
-  formData: FormData
-) {
+export async function loginAction(_prevState: { error: string } | null, formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   try {
@@ -17,10 +14,7 @@ export async function loginAction(
   redirect("/dashboard");
 }
 
-export async function signupAction(
-  _prevState: { error: string } | null,
-  formData: FormData
-) {
+export async function signupAction(_prevState: { error: string } | null, formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   try {
