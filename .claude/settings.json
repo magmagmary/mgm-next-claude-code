@@ -2,7 +2,6 @@
   "hooks": {
     "PostToolUse": [
       {
-        "mather": "Edit|Write",
         "hooks": [
           {
             "type": "command",
@@ -11,5 +10,8 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
   }
 }
