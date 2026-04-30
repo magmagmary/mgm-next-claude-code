@@ -1,6 +1,6 @@
-import { nanoid } from "nanoid";
-import { type SQLQueryBindings } from "bun:sqlite";
-import { query, get, run } from "@/lib/db";
+import { nanoid } from 'nanoid';
+import { type SQLQueryBindings } from 'bun:sqlite';
+import { query, get, run } from '@/lib/db';
 
 export type Note = {
   id: string;
@@ -37,33 +37,35 @@ function fromRow(row: NoteRow): Note {
   };
 }
 
-const EMPTY_DOC = JSON.stringify({ type: "doc", content: [] });
+const EMPTY_DOC = JSON.stringify({ type: 'doc', content: [] });
 
 export function createNote(
   userId: string,
   data: { title?: string; contentJson?: string } = {},
 ): Note {
   const id = nanoid();
-  const title = data.title ?? "Untitled note";
+  const title = data.title ?? 'Untitled note';
   const contentJson = data.contentJson ?? EMPTY_DOC;
-  run(`INSERT INTO notes (id, user_id, title, content_json) VALUES (?, ?, ?, ?)`, [
-    id,
-    userId,
-    title,
-    contentJson,
-  ]);
+  run(
+    `INSERT INTO notes (id, user_id, title, content_json) VALUES (?, ?, ?, ?)`,
+    [id, userId, title, contentJson],
+  );
   return fromRow(get<NoteRow>(`SELECT * FROM notes WHERE id = ?`, [id])!);
 }
 
 export function getNoteById(userId: string, noteId: string): Note | null {
-  const row = get<NoteRow>(`SELECT * FROM notes WHERE id = ? AND user_id = ?`, [noteId, userId]);
+  const row = get<NoteRow>(`SELECT * FROM notes WHERE id = ? AND user_id = ?`, [
+    noteId,
+    userId,
+  ]);
   return row ? fromRow(row) : null;
 }
 
 export function getNotesByUser(userId: string): Note[] {
-  return query<NoteRow>(`SELECT * FROM notes WHERE user_id = ? ORDER BY updated_at DESC`, [
-    userId,
-  ]).map(fromRow);
+  return query<NoteRow>(
+    `SELECT * FROM notes WHERE user_id = ? ORDER BY updated_at DESC`,
+    [userId],
+  ).map(fromRow);
 }
 
 export function updateNote(
@@ -74,15 +76,18 @@ export function updateNote(
   const sets: string[] = ["updated_at = datetime('now')"];
   const params: SQLQueryBindings[] = [];
   if (data.title !== undefined) {
-    sets.push("title = ?");
+    sets.push('title = ?');
     params.push(data.title);
   }
   if (data.contentJson !== undefined) {
-    sets.push("content_json = ?");
+    sets.push('content_json = ?');
     params.push(data.contentJson);
   }
   params.push(noteId, userId);
-  run(`UPDATE notes SET ${sets.join(", ")} WHERE id = ? AND user_id = ?`, params);
+  run(
+    `UPDATE notes SET ${sets.join(', ')} WHERE id = ? AND user_id = ?`,
+    params,
+  );
   return getNoteById(userId, noteId);
 }
 
@@ -90,7 +95,11 @@ export function deleteNote(userId: string, noteId: string): void {
   run(`DELETE FROM notes WHERE id = ? AND user_id = ?`, [noteId, userId]);
 }
 
-export function setNotePublic(userId: string, noteId: string, isPublic: boolean): Note | null {
+export function setNotePublic(
+  userId: string,
+  noteId: string,
+  isPublic: boolean,
+): Note | null {
   if (isPublic) {
     const existing = getNoteById(userId, noteId);
     if (!existing) return null;
@@ -109,6 +118,9 @@ export function setNotePublic(userId: string, noteId: string, isPublic: boolean)
 }
 
 export function getNoteByPublicSlug(slug: string): Note | null {
-  const row = get<NoteRow>(`SELECT * FROM notes WHERE public_slug = ? AND is_public = 1`, [slug]);
+  const row = get<NoteRow>(
+    `SELECT * FROM notes WHERE public_slug = ? AND is_public = 1`,
+    [slug],
+  );
   return row ? fromRow(row) : null;
 }

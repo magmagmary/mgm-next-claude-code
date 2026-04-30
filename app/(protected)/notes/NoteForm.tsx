@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import { createNoteAction } from "./actions";
+import { useRef } from 'react';
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import { createNoteAction } from './actions';
 
 export default function NoteForm() {
   const hiddenRef = useRef<HTMLInputElement>(null);
@@ -15,7 +15,7 @@ export default function NoteForm() {
     immediatelyRender: false,
     editorProps: {
       attributes: {
-        class: "prose prose-sm max-w-none min-h-[320px] focus:outline-none p-4",
+        class: 'prose prose-sm max-w-none min-h-[320px] focus:outline-none p-4',
       },
     },
   });
@@ -48,56 +48,59 @@ export default function NoteForm() {
         <div className="flex flex-wrap gap-1 p-2 border-b border-gray-100 bg-gray-50">
           {[
             {
-              label: "B",
-              title: "Bold",
+              label: 'B',
+              title: 'Bold',
               action: () => editor?.chain().focus().toggleBold().run(),
-              active: () => !!editor?.isActive("bold"),
+              active: () => !!editor?.isActive('bold'),
             },
             {
-              label: "I",
-              title: "Italic",
+              label: 'I',
+              title: 'Italic',
               action: () => editor?.chain().focus().toggleItalic().run(),
-              active: () => !!editor?.isActive("italic"),
+              active: () => !!editor?.isActive('italic'),
             },
             {
-              label: "H1",
-              title: "Heading 1",
-              action: () => editor?.chain().focus().toggleHeading({ level: 1 }).run(),
-              active: () => !!editor?.isActive("heading", { level: 1 }),
+              label: 'H1',
+              title: 'Heading 1',
+              action: () =>
+                editor?.chain().focus().toggleHeading({ level: 1 }).run(),
+              active: () => !!editor?.isActive('heading', { level: 1 }),
             },
             {
-              label: "H2",
-              title: "Heading 2",
-              action: () => editor?.chain().focus().toggleHeading({ level: 2 }).run(),
-              active: () => !!editor?.isActive("heading", { level: 2 }),
+              label: 'H2',
+              title: 'Heading 2',
+              action: () =>
+                editor?.chain().focus().toggleHeading({ level: 2 }).run(),
+              active: () => !!editor?.isActive('heading', { level: 2 }),
             },
             {
-              label: "H3",
-              title: "Heading 3",
-              action: () => editor?.chain().focus().toggleHeading({ level: 3 }).run(),
-              active: () => !!editor?.isActive("heading", { level: 3 }),
+              label: 'H3',
+              title: 'Heading 3',
+              action: () =>
+                editor?.chain().focus().toggleHeading({ level: 3 }).run(),
+              active: () => !!editor?.isActive('heading', { level: 3 }),
             },
             {
-              label: "•—",
-              title: "Bullet list",
+              label: '•—',
+              title: 'Bullet list',
               action: () => editor?.chain().focus().toggleBulletList().run(),
-              active: () => !!editor?.isActive("bulletList"),
+              active: () => !!editor?.isActive('bulletList'),
             },
             {
-              label: "<>",
-              title: "Inline code",
+              label: '<>',
+              title: 'Inline code',
               action: () => editor?.chain().focus().toggleCode().run(),
-              active: () => !!editor?.isActive("code"),
+              active: () => !!editor?.isActive('code'),
             },
             {
-              label: "```",
-              title: "Code block",
+              label: '```',
+              title: 'Code block',
               action: () => editor?.chain().focus().toggleCodeBlock().run(),
-              active: () => !!editor?.isActive("codeBlock"),
+              active: () => !!editor?.isActive('codeBlock'),
             },
             {
-              label: "—",
-              title: "Horizontal rule",
+              label: '—',
+              title: 'Horizontal rule',
               action: () => editor?.chain().focus().setHorizontalRule().run(),
               active: () => false,
             },
@@ -108,7 +111,9 @@ export default function NoteForm() {
               title={title}
               onClick={action}
               className={`px-2 py-1 text-xs font-mono rounded transition-colors ${
-                active() ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-200"
+                active()
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-600 hover:bg-gray-200'
               }`}
             >
               {label}

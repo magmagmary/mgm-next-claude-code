@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { getSession } from "@/lib/session";
-import { getNotesByUser } from "@/lib/notes";
-import { logoutAction } from "./actions";
+import Link from 'next/link';
+import { getSession } from '@/lib/session';
+import { getNotesByUser } from '@/lib/notes';
+import { logoutAction } from './actions';
 
 export default async function DashboardPage() {
   const session = await getSession();

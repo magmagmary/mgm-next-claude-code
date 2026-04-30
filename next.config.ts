@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["bun:sqlite", "better-auth"],
+  serverExternalPackages: ['bun:sqlite', 'better-auth'],
 };
 
 export default nextConfig;

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useActionState } from "react";
-import { useRouter } from "next/navigation";
-import type { loginAction, signupAction } from "./actions";
+import { useActionState } from 'react';
+import { useRouter } from 'next/navigation';
+import type { loginAction, signupAction } from './actions';
 
 type Action = typeof loginAction | typeof signupAction;
 
 interface Props {
-  mode: "login" | "signup";
+  mode: 'login' | 'signup';
   action: Action;
 }
 
@@ -15,33 +15,35 @@ export default function AuthForm({ mode, action }: Props) {
   const router = useRouter();
   const [state, formAction, isPending] = useActionState(action, null);
 
-  const isSignup = mode === "signup";
+  const isSignup = mode === 'signup';
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="w-full max-w-sm">
-        <h1 className="text-3xl font-bold text-center mb-8 tracking-tight">magmag</h1>
+        <h1 className="text-3xl font-bold text-center mb-8 tracking-tight">
+          magmag
+        </h1>
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-8">
           {/* Tabs */}
           <div className="flex mb-6 border-b border-gray-200">
             <button
               type="button"
-              onClick={() => router.replace("/login")}
+              onClick={() => router.replace('/login')}
               className={`flex-1 pb-3 text-sm font-medium transition-colors ${
                 !isSignup
-                  ? "border-b-2 border-gray-900 text-gray-900"
-                  : "text-gray-400 hover:text-gray-600"
+                  ? 'border-b-2 border-gray-900 text-gray-900'
+                  : 'text-gray-400 hover:text-gray-600'
               }`}
             >
               Log in
             </button>
             <button
               type="button"
-              onClick={() => router.replace("/login?mode=signup")}
+              onClick={() => router.replace('/login?mode=signup')}
               className={`flex-1 pb-3 text-sm font-medium transition-colors ${
                 isSignup
-                  ? "border-b-2 border-gray-900 text-gray-900"
-                  : "text-gray-400 hover:text-gray-600"
+                  ? 'border-b-2 border-gray-900 text-gray-900'
+                  : 'text-gray-400 hover:text-gray-600'
               }`}
             >
               Sign up
@@ -51,7 +53,10 @@ export default function AuthForm({ mode, action }: Props) {
           {/* Form */}
           <form action={formAction} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Email
               </label>
               <input
@@ -65,7 +70,10 @@ export default function AuthForm({ mode, action }: Props) {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Password
               </label>
               <input
@@ -73,13 +81,15 @@ export default function AuthForm({ mode, action }: Props) {
                 name="password"
                 type="password"
                 required
-                autoComplete={isSignup ? "new-password" : "current-password"}
+                autoComplete={isSignup ? 'new-password' : 'current-password'}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                 placeholder="••••••••"
               />
             </div>
 
-            {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
+            {state?.error && (
+              <p className="text-sm text-red-600">{state.error}</p>
+            )}
 
             <button
               type="submit"
@@ -88,11 +98,11 @@ export default function AuthForm({ mode, action }: Props) {
             >
               {isPending
                 ? isSignup
-                  ? "Creating account..."
-                  : "Logging in..."
+                  ? 'Creating account...'
+                  : 'Logging in...'
                 : isSignup
-                  ? "Create account"
-                  : "Log in"}
+                  ? 'Create account'
+                  : 'Log in'}
             </button>
           </form>
 
@@ -100,10 +110,10 @@ export default function AuthForm({ mode, action }: Props) {
           <p className="mt-5 text-center text-sm text-gray-500">
             {isSignup ? (
               <>
-                Already have an account?{" "}
+                Already have an account?{' '}
                 <button
                   type="button"
-                  onClick={() => router.replace("/login")}
+                  onClick={() => router.replace('/login')}
                   className="text-gray-900 font-medium hover:underline"
                 >
                   Log in
@@ -111,10 +121,10 @@ export default function AuthForm({ mode, action }: Props) {
               </>
             ) : (
               <>
-                Don&apos;t have an account?{" "}
+                Don&apos;t have an account?{' '}
                 <button
                   type="button"
-                  onClick={() => router.replace("/login?mode=signup")}
+                  onClick={() => router.replace('/login?mode=signup')}
                   className="text-gray-900 font-medium hover:underline"
                 >
                   Sign up
