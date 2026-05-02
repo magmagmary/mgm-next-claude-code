@@ -31,3 +31,7 @@
 
 11: Check auto memory
 `claude >> /memory`
+
+12: run claude on remote ( like github repo)
+`claude >> /remote`
+`claude --remote ${prompt}`
