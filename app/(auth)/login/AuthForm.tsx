@@ -94,7 +94,7 @@ export default function AuthForm({ mode, action }: Props) {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full py-2 px-4 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-3/4 block mx-auto my-8 py-2 px-4 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isPending
                 ? isSignup
